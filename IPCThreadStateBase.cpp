@@ -21,6 +21,7 @@
 
 #include <utils/Log.h>
 
+#include <cstring>
 #include <errno.h>
 #include <inttypes.h>
 #include <pthread.h>
@@ -65,7 +66,7 @@ void IPCThreadStateBase::pushCurrentState(CallState callState) {
 }
 
 IPCThreadStateBase::CallState IPCThreadStateBase::popCurrentState() {
-    ALOG_ASSERT(mCallStateStack.size > 0);
+    ALOG_ASSERT(mCallStateStack.size() > 0);
     CallState val = mCallStateStack.top();
     mCallStateStack.pop();
     return val;
